@@ -1,0 +1,58 @@
+#include<iostream>
+#include<vector>
+#include<queue>
+#include<climits>
+using namespace std;
+class solution
+{
+    public:
+    void BFS(vector<int> adj[],int V, int src)
+    {
+        int dis[V];
+        for(int i=0;i<V;i++)
+        {
+            dis[i]=INT_MAX;
+        }
+        queue<int> q;
+        
+        dis[src]=0;
+        q.push(src);
+        
+        while(!q.empty())
+        {
+            int node=q.front();
+            q.pop();
+            
+            for(auto it:adj[node])
+            {
+                if(dis[node]+1<dis[it])
+                {
+                    dis[it]=dis[node]+1;
+                    q.push(it);
+                }
+            }
+        }
+        for(int i=0;i<V;i++)
+        {
+            cout<<dis[i]<<" ";
+        }
+        
+    }
+};
+
+int main()
+{
+    int V,E;
+    cin>>V>>E;
+    int u,v;
+    vector<int> adj[V];
+    for(int i=0;i<E;i++)
+    {
+        cin>>u>>v;
+        adj[u].push_back(v);
+        adj[v].push_back(u);
+    }
+    solution obj;
+    obj.BFS(adj,V,0);
+    return 0;
+}
