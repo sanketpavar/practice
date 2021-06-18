@@ -26,7 +26,7 @@ int main()
 
     while(!pq.empty())
     {
-        pair<int,int> node=pq.front();
+        pair<int,int> node=pq.top();
         pq.pop();
         
         for(auto it:adj[node.second])
@@ -36,4 +36,4 @@ int main()
                 pq.push({-dis[it.first] , it.first});
         }
     }
-}
+}}
