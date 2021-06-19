@@ -1,0 +1,63 @@
+#include<iostream>
+#include<vector>
+#include<climits>
+using namespace std;
+
+
+struct node
+{
+   int u;
+   int v;
+   int wt;
+   node(int first, int second, int weight)
+   {
+       u=first;
+       v=second;
+       wt=weight;
+   }
+};
+int main()
+{
+    int V,E;
+    cin>>V>>E;
+    
+    int u,v,wt;
+    vector<node> edges;
+    for(int i=0;i<E;i++)
+    {
+        cin>>u>>v>>wt;
+        edges.push_back(node(u,v,wt));
+    }
+    
+    int src;
+    cin>>src;
+    vector<int> dis(V,INT_MAX);
+    dis[src]=0;
+    
+    for(int i=0;i<V-1;i++)//relaxing n-1 time
+    {
+        for(auto it:edges)
+        {
+            if(dis[it.u]+it.wt<dis[it.v])//simple lofic if u<v then change
+            {
+                dis[it.v]=dis[it.u]+it.wt;
+            }
+        }
+    }
+    int fl=0;
+    for(auto it:edges)
+    {
+        if(dis[it.u]+it.wt<dis[it.v])//it will check one more time if dis chnages then it have negative cycle
+        cout<<"negative cycle";
+        fl=1;
+        break;
+    }
+    if(!fl)
+    {
+        for(int i=0;i<V;i++)
+        {
+            cout << i << " " << dis[i] << endl;
+        }
+    }
+    return 0;
+}
