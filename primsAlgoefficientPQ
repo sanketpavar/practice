@@ -1,0 +1,94 @@
+#include<iostream>
+#include<vector>
+#include<queue>
+#include<climits>
+using namespace std;
+
+
+int main()
+{
+    int V,E;
+    cin>>V>>E;
+    int u,v,w;
+    vector<pair<int,int>> adj[V];
+    
+    for(int i=0;i<E;i++)
+    {
+        cin>>u>>v>>w;
+        adj[u].push_back({v,w});
+        adj[v].push_back({u,w});
+    }
+    
+    //we require three things as follows
+    int parent[V];
+    int dis[V];
+    bool mstSet[V];
+    
+    for(int i=0;i<V;i++)
+    {
+        parent[i]=0;
+        dis[i]=INT_MAX;
+        mstSet[i]=false;
+    }
+    
+    parent[0]=-1;
+    dis[0]=0;
+    priority_queue<pair<int,int>> pq;
+    pq.push({0,0});//dis ,node
+    
+    
+    while(!pq.empty())
+    {
+        int u=pq.top().second;
+        pq.pop();
+        
+        mstSet[u]=true;
+        
+        for(auto it:adj[u])
+        {
+            int n=it.first;//node
+            int wt=it.second;//weight frm adj
+            
+            if(mstSet[n]==false && wt<dis[n])
+            {
+                parent[n]=u;
+                dis[v]=wt;
+                pq.push({dis[v],v});
+            }
+            
+            
+        }
+        
+        
+    }for(int i=0; i<V;i++)
+    {
+        cout<<parent[i]<<" ";
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
