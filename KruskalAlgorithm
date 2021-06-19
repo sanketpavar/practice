@@ -1,0 +1,32 @@
+#include<iostream>
+using namespace std;
+
+class solution
+{
+    public:
+    struct node{
+        int u;
+        int v;
+        int w;
+        node(int first,int second, int weight)
+        {
+            u=first;
+            v=second;
+            w=weight;
+        }
+    };
+};
+int main()
+{
+    int V,E;
+    cin>>V>>E;
+    int u,v,w;
+    vector<node> edges;
+    
+    for(int i=0;i<V;i++)
+    {
+        cin>>u>>v>>w;
+        edges.push_back({})
+        
+    }
+}
