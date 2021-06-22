@@ -1,0 +1,72 @@
+#include<iostream>
+using namespace std;
+
+class node{
+    public:
+    int key;
+    int data;
+    node* next;
+    
+    node()
+    {
+        key=0;
+        data=0;
+        next=NULL;
+    }
+    node(int k, int d)
+    {
+        key=k;
+        data=d;
+    }
+};
+
+class SinglyLinkedList
+{
+    public :
+    node* head;
+    
+    SinglyLinkedList()
+    {
+        head=NULL;
+    }
+    SinglyLinkedList(node *n)
+    {
+        head=n;
+    }
+};
+
+//checking if node exisits using key value
+node* nodeExists(int k)
+{
+    node* temp=NULL;
+    node* ptr=head;
+    
+    while(!ptr=NULL)
+    {
+        if(ptr->key==key)
+        {
+            temp=ptr;
+        }
+        ptr=ptr->next;
+    }
+    return temp;
+}
+
+//append node to the list
+void appendNode(node *n)
+{
+    if(!nodeExists(n->key==NULL)
+    {
+        cout << "Node Already exists with key value : " << n -> key << ". Append another node with different Key value" << endl;
+    }
+    else
+    {
+        if(head==NULL)
+    }
+}
+
+int main()
+{
+    SinglyLinkedList s;
+    return 0;
+}
