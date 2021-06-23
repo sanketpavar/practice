@@ -1,0 +1,67 @@
+/** recursion problem- combinationSum
+ * Input : arr[] = 2, 4, 6, 8 
+            x = 8
+Output : [2, 2, 2, 2]
+         [2, 2, 4]
+         [2, 6]
+         [4, 4]
+         [8]
+ * you can take a single no multiple times and make target as 7
+ * 
+ * */
+ #include<iostream>
+ #include<vector>
+ using namespace std;
+ 
+class solution
+{
+    public:
+    void findCombination(int index, int target, vector<int> arr,vector<vector<int>> &ans, vector<int> ds)
+    {
+        if(index==arr.size())
+        {
+            if(target==0)
+            {
+                ans.push_back(ds);
+            }
+            return;
+        }
+        //picking the element
+        if(arr[index]<= target)
+        {
+            ds.push_back(arr[index]);
+            findCombination(index, target-arr[index],arr,ans,ds);
+            ds.pop_back();
+        }
+        findCombination(index+1,target,arr,ans, ds);
+    }
+    public:
+    vector<vector<int>> combinationSum(vector<int>& candidates, int target)
+    {
+        vector<vector<int>> ans;
+        vector<int> ds;
+        findCombination(0,target,candidates,ans,ds);
+        return ans;
+    }
+    
+};
+
+int main()
+{
+    int n;
+    cin>>n;
+    vector<int> arr;
+    for(int i=0;i<n;i++)
+    {
+        int x;
+        cin>>x;
+        arr.push_back(x);
+    }
+    int sum;
+    cin>>sum;
+    
+    solution obj;
+    obj.combinationSum(arr,sum);
+    
+    
+}
