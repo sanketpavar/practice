@@ -1,0 +1,29 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+class Solution
+{
+  public:
+  void solve(int i,int j, vector<vector<int> &m, int n, vector<string> &ans,string move, vector<vector<int>> &vis)
+  {
+      
+  }
+  
+  public:
+  vector<string> findPath(vector<vector<int>> &m, int n)
+  {
+      vector<string> ans;
+      vector<vector<int>> vis(n,vector<int> (n,0));//have doubt here
+      if(m[0,0]==1)/**starting  point  is not there means 1 us not there then false otherwise call function(base cheking)*/
+      {
+         solve(0,0,m,n,ans,"",vis);
+         return ans;
+      }
+  }
+};
+
+int main()
+{
+    Solution obj;
+}
