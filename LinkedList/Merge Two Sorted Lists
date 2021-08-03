@@ -1,0 +1,42 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
+        // check if only single list is gven
+        if(l1==NULL) return l2;
+        if(l2==NULL) return l1;
+        
+        //check l1>l2 and swap
+        if(l1->val > l2->val) std:: swap(l1,l2);
+        
+        //point the dummy to the l1
+        ListNode *res= l1;
+        
+        // until greater then l2 found just iterate
+        
+        while(l1!=NULL && l2!=NULL)
+        {
+            ListNode *temp= NULL;
+            while(l1!=NULL && l1->val <=l2->val)
+            {
+                temp=l1;
+                l1=l1->next;
+            }//after this in tem we have last element so it will be greater then swap
+            //first point temp next to l2
+            temp->next=l2;
+            std:: swap(l1,l2);
+            
+        }
+    return res;
+    }
+    
+};
