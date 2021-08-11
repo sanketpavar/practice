@@ -1,0 +1,31 @@
+class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+        //dutch flag algo
+        
+        int lo=0;
+        int hi=nums.size()-1;
+        int mid=0;
+        
+        while(mid<=hi)
+        {
+            switch(nums[mid])
+            {
+                    // if mid is 0
+                case 0:
+                    swap(nums[lo++],nums[mid++]);
+                    break;
+                    
+                    //if mid is 1
+                case 1:
+                    mid++;
+                    break;
+                    
+                    //mid is 2
+                case 2:
+                    swap(nums[mid],nums[hi--]);
+                    break;
+            }
+        }
+    }
+};
