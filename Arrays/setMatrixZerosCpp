@@ -1,0 +1,35 @@
+class Solution {
+public:
+    void setZeroes(vector<vector<int>>& matrix) {
+        
+        int col0=1, row=matrix.size(), col= matrix[0].size();
+        
+        //make first col and array equals zero if element uis present
+        for(int i=0;i<row;i++)
+        {
+            if(matrix[i][0]==0) col0=0;
+            for(int j=1;j<col;j++)
+            {
+                if(matrix[i][j]==0)
+                {
+                    matrix[i][0]=0;
+                    matrix[0][j]=0;
+                }
+                
+            }
+        }
+        
+        //again travel reverse to put zros
+        for(int i=row-1;i>=0;i--)
+        {
+            for(int j=col-1;j>=1;j--)//remember j>1 not 0
+            {
+                if(matrix[i][0]==0 || matrix[0][j]==0)
+                {
+                    matrix[i][j]=0;
+                }
+            }
+            if(col0==0) matrix[i][0]=0; //if the first col is 0 then update it at last
+        }
+    }
+};
