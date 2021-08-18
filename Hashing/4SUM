@@ -1,0 +1,54 @@
+class Solution {
+public:
+    vector<vector<int>> fourSum(vector<int>& nums, int target) {
+        
+        vector<vector<int>> ans;
+        if(nums.empty()) return ans; // if not have any elemnt rtuen empty vector
+        
+        //1st sort the vector
+        sort(nums.begin(), nums.end());
+        int n= nums.size();
+        
+        for(int i=0; i<n; i++)
+        {
+            for(int j=i+1;j<n; j++)
+            {
+                int target_1= target-nums[j]-nums[i];
+                int left=j+1;
+                int right=n-1;
+                while(left<right)
+                {
+                    //compute the sum of left plus right which should be target
+                    int two_sum=nums[left]+nums[right];
+                if(two_sum < target_1) left++ ;
+                
+                else if(two_sum>target_1) right--;
+                
+                else //the target is equal to difference and then that is ans so push into ans
+                {
+                    //to add the particular pair into vector of vector create temp vector //and then add to ans
+                    vector<int> temp(4,0);
+                    temp[0]=nums[i];//dont use pushback here for entering elments  (single))
+                    temp[1]=nums[j];
+                    temp[2]=nums[left];
+                    temp[3]=nums[right]; 
+                    ans.push_back(temp);
+                    
+                    while(left<right && nums[left]==temp[2])  left++;
+                    
+                    while(left<right && nums[right]==temp[3]) right--;
+                    
+                }
+                }//while complets
+                
+                //remove duplicate j rg 1 2 2 2 thenn afte index 1 it will go 3
+                while(j+1<n && nums[j+1]==nums[j]) j++;         
+            }
+            //remove duplicate i
+            while(i+1<n && nums[i+1]== nums[i]) i++;
+        }
+        return ans;
+        
+        
+    }
+};
