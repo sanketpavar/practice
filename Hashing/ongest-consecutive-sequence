@@ -1,0 +1,35 @@
+class Solution {
+public:
+    int longestConsecutive(vector<int>& nums) {
+        
+       set<int> hashset;//taking hashset and entering each value into that
+        
+        for(int num:nums)
+        {
+            hashset.insert(num);
+        }
+        
+        int longestStreak=0;// longest streak
+        
+        for( int num:nums)
+        {
+            if(!hashset.count(num-1))//checking if previos no is presennt. if yes then it //will directly go to the next no
+            {
+                //if entered in this loop that means it  is the first no of the streak
+                // find if next no present
+                
+            int tempStreak=1;
+                
+              while(hashset.count(num+1)) //count retuens if no is present or not 
+              {
+                tempStreak++;  
+                 num=num+1;
+              }
+                
+                longestStreak=max(tempStreak, longestStreak);
+            }
+        }return longestStreak;      
+        
+        
+    }
+};
